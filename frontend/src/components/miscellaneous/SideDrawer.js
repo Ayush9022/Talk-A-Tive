@@ -35,9 +35,8 @@ import { Spinner } from "@chakra-ui/spinner";
 // import { getSender } from "../../config/ChatLogics";
 import UserListItem from "../UserAvatar/UserListItem";
 import { useDispatch } from "react-redux";
-import { UseSelector } from "react-redux";
 import { addSelectedChat } from "../../utils/selectedChatSlice";
-import { addChats } from "../../utils/chatsSlice";
+import { addsingleChat } from "../../utils/chatsSlice";
 
 const SideDrawer = () => {
   const [search, setSearch] = useState("");
@@ -51,7 +50,7 @@ const SideDrawer = () => {
   const dispatch = useDispatch();
   // const test = useSelector((store) => store.selectedChat);
   const chats = useSelector((store) => store.chats);
-
+  console.log(chats.chats);
   const logoutHandler = () => {
     localStorage.removeItem("userInfo");
     navigate("/");
@@ -118,14 +117,16 @@ const SideDrawer = () => {
         config
       );
 
-      // if (!chats.find((c) => c._id === data._id))
-      //   dispatch(addChats([data, ...chats]));
+      if (!chats.chats.find((c) => c._id === data._id))
+        dispatch(addsingleChat(data));
+
       dispatch(addSelectedChat(data));
       // setSelectedChat(data);
 
       setLoadingChat(false);
       // console.log(test);
       onClose();
+      // navigate("/chats");
     } catch (error) {
       toast({
         title: "Error fetching the chat",
@@ -233,7 +234,7 @@ const SideDrawer = () => {
               ))
               // <span>Results</span>
             )}
-            {loadingChat && <Spinner ml="auto" d="flex" />}
+            {/* {loadingChat && <Spinner ml="auto" d="flex" />} */}
           </DrawerBody>
         </DrawerContent>
       </Drawer>
