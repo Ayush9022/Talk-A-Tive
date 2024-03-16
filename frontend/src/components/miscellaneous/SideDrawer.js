@@ -50,7 +50,7 @@ const SideDrawer = () => {
   const dispatch = useDispatch();
   // const test = useSelector((store) => store.selectedChat);
   const chats = useSelector((store) => store.chats);
-  console.log(chats.chats);
+  // console.log(chats.chats);
   const logoutHandler = () => {
     localStorage.removeItem("userInfo");
     navigate("/");
