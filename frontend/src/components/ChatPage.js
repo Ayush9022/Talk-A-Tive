@@ -12,6 +12,7 @@ const ChatPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const user = useSelector((store) => store.login.userInfo);
+  const [fetchAgain, setFetchAgain] = useState(false);
   // console.log(user);
 
   useEffect(() => {
@@ -32,8 +33,10 @@ const ChatPage = () => {
         h="91.5vh"
         p="10px"
       >
-        {user && <MyChats />}
-        {user && <Chatbox />}
+        {user && <MyChats fetchAgain={fetchAgain} />}
+        {user && (
+          <Chatbox fetchAgain={fetchAgain} setFetchAgain={setFetchAgain} />
+        )}
       </Flex>
     </div>
   );

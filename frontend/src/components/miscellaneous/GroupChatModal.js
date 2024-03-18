@@ -36,9 +36,9 @@ const GroupChatModal = ({ children }) => {
   //   const { user, chats, setChats } = ChatState();
   let user = useSelector((store) => store.login).userInfo;
   // user = user.userInfo;
-  console.log(user);
+  // console.log(user);
   const chats = useSelector((store) => store.chats).chats;
-  console.log(chats);
+  // console.log(chats);
   const dispatch = useDispatch();
 
   const handleGroup = (userToAdd) => {

@@ -25,6 +25,7 @@ const MyChats = ({ fetchAgain }) => {
   const dispatch = useDispatch();
   const { chats } = useSelector((store) => store.chats);
   const { selectedChats } = useSelector((store) => store.selectedChat);
+  // console.log(selectedChats);
   // console.log(chats);
 
   const fetchChats = async () => {
