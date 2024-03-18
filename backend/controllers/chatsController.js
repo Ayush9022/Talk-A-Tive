@@ -131,7 +131,7 @@ const removeFromGroup = asyncHandler(async (req, res) => {
 
   // check if the requester is admin
 
-  const removed = await Chat.findByIdAndUpdate(
+  const data = await Chat.findByIdAndUpdate(
     chatId,
     {
       $pull: { users: userId },
@@ -143,11 +143,11 @@ const removeFromGroup = asyncHandler(async (req, res) => {
     .populate("users", "-password")
     .populate("groupAdmin", "-password");
 
-  if (!removed) {
+  if (!data) {
     res.status(404);
     throw new Error("Chat Not Found");
   } else {
-    res.json(removed);
+    res.json(data);
   }
 });
 

@@ -11,6 +11,7 @@ import ProfileModal from "./miscellaneous/ProfileModal";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { addSelectedChat } from "../utils/selectedChatSlice";
+import UpdateGroupChatModal from "./miscellaneous/UpdateGroupChatModal";
 
 const SingleChat = ({ fetchAgain, setFetchAgain }) => {
   const toast = useToast();
@@ -54,7 +55,17 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
                 )}
               </>
             ) : (
-              <>{selectedChats.chatName.toUpperCase()}</>
+              <>
+                <Flex>
+                  {selectedChats.chatName.toUpperCase()}
+                  <Spacer />
+                  <UpdateGroupChatModal
+                    // fetchMessages={fetchMessages}
+                    fetchAgain={fetchAgain}
+                    setFetchAgain={setFetchAgain}
+                  />
+                </Flex>
+              </>
             )}
           </Text>
         </>
