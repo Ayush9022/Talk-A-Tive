@@ -12,6 +12,7 @@ const cors = require("cors");
 const connectDB = require("./config/db.js");
 const userRoutes = require("./Routes/userRoutes.js");
 const chatRoutes = require("./Routes/chatRoutes.js");
+const messageRoutes = require("./Routes/messageRoutes.js");
 const { notFound, errorHandler } = require("./middleware/errorMiddleware.js");
 
 dotenv.config();
@@ -20,12 +21,13 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// app.get("/", (req, res) => {
-//   res.send("sab sahi hai");
-// });
+app.get("/", (req, res) => {
+  res.send("sab sahi hai");
+});
 
 app.use("/api/user", userRoutes);
 app.use("/api/chat", chatRoutes);
+app.use("/api/message", messageRoutes);
 
 app.use(notFound);
 app.use(errorHandler);
