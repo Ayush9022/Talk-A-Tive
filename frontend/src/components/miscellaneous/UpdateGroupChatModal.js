@@ -39,7 +39,7 @@ const UpdateGroupChatModal = ({ fetchMessages, fetchAgain, setFetchAgain }) => {
   var selectedChat = selectedChats;
   //   console.log(selectedChats);
   const user = useSelector((store) => store.login).userInfo;
-  console.log(user);
+  // console.log(user);
   const dispatch = useDispatch();
 
   const handleSearch = async (query) => {
@@ -204,7 +204,7 @@ const UpdateGroupChatModal = ({ fetchMessages, fetchAgain, setFetchAgain }) => {
         : dispatch(addSelectedChat(data));
       //   dispatch(addSelectedChat(data));
       setFetchAgain(!fetchAgain);
-      //   fetchMessages();
+      fetchMessages();
       setLoading(false);
     } catch (error) {
       toast({
